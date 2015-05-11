@@ -2,7 +2,7 @@
 % Please edit documentation in R/addons.R
 \name{wdReplaceTextByImage}
 \alias{wdReplaceTextByImage}
-\title{Replaces a string with an Image}
+\title{Replaces a string with an image}
 \usage{
 wdReplaceTextByImage(find = "", file, wdapp = .R2wd, wd = getwd(),
   warn = TRUE)
@@ -10,13 +10,16 @@ wdReplaceTextByImage(find = "", file, wdapp = .R2wd, wd = getwd(),
 \arguments{
 \item{find}{A string.}
 
-\item{file}{path to the image.}
+\item{file}{The path to the image.}
 }
 \value{
-invisibly returns pointer to new inlineshape object.
+Invisibly returns a pointer to new inlineshape object.
 }
 \description{
 This function replaces a piece of text with an image.
+}
+\section{TODO}{
+ handle case if text is found multiple times
 }
 \examples{
 wdGet("inst/test.docx")

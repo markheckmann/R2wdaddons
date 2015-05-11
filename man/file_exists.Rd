@@ -2,7 +2,7 @@
 % Please edit documentation in R/addons.R
 \name{file_exists}
 \alias{file_exists}
-\title{Checks if a file exists!}
+\title{Checks if a file exists}
 \usage{
 file_exists(file, wd = getwd())
 }
@@ -15,7 +15,8 @@ file_exists(file, wd = getwd())
 TRUE if file exists, FALSE if not.
 }
 \description{
-This function checks if a file is existing in a directory!
+Checks if files exists after converting relative into absolute path based on
+current working directory by default.
 }
 \examples{
 file_exists("inst/test.docx")

@@ -10,13 +10,13 @@ wdScaleImage(i, ishp = NULL, width = NULL, height = NULL,
 \arguments{
 \item{i}{The number of the image inside the document.}
 
-\item{ishp}{A pointer to the image. Best used with wdReplaceTextByImage return value.}
+\item{ishp}{A pointer to the inline shape, as e.g. returned by \code{\link{wdReplaceTextByImage}}.}
 
 \item{width}{The width of the new image in Percent of the word page.}
 
 \item{height}{The height of the new image in Percent of the word page.}
 
-\item{lock.asp}{Locks the ratio of hight and width (correct this way?)}
+\item{lock.asp}{Locks the ratio of height and width (aspect ratio).}
 
 \item{units}{The number of pixel the image should have}
 }
@@ -25,6 +25,9 @@ invisibly returns pointer to new inlineshape object.
 }
 \description{
 This function change the sclaing of an image in a document.
+}
+\section{TODO}{
+ add example with wdReplaceTextByImage
 }
 \examples{
 wdGet("inst/wdScaleImage.docx")

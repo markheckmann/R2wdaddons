@@ -16,6 +16,9 @@ wdAddImageCaption(i, ishp = NULL, title = "", sep = ":", wdapp = .R2wd)
 \description{
 This function adds a caption to an image.
 }
+\section{TODO}{
+ check if captions exists and replace it.
+}
 \examples{
 wdGet("inst/wdScaleImage.docx")
 wdAddImageCaption(i = 1, title = "My image")

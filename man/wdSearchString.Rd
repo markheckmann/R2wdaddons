@@ -2,7 +2,7 @@
 % Please edit documentation in R/addons.R
 \name{wdSearchString}
 \alias{wdSearchString}
-\title{Checks if a sting in contained in a word document.}
+\title{Checks if a string is contained in a Word document.}
 \usage{
 wdSearchString(find = "", wdapp = .R2wd, warn = TRUE)
 }
@@ -10,10 +10,10 @@ wdSearchString(find = "", wdapp = .R2wd, warn = TRUE)
 \item{find}{A string.}
 }
 \value{
-TRUE if string is found, FALSE if not.
+\code{TRUE} if string is found, \code{FALSE} if not.
 }
 \description{
-This function checks if a sting in contained in a word document.
+This function checks if a string in contained in a Word document.
 }
 \examples{
 wdGet("inst/test.docx")

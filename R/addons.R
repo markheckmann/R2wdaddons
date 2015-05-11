@@ -1,6 +1,8 @@
-#' Checks if a file exists!
+#' Checks if a file exists
 #' 
-#' This function checks if a file is existing in a directory!
+#' Checks if files exists after converting relative into absolute path based on 
+#' current working directory by default.
+#' 
 #' @param x A filename.
 #' @param wd A Path to the file, if not set otherwise the working directory is used.
 #' @return TRUE if file exists, FALSE if not.
@@ -8,10 +10,6 @@
 #' @keywords internal
 #' @example /inst/examples/file_existsExample.R
 #' 
-
-# checks if files exists after converting
-# relative into absolute path based on current working
-# directory by default
 file_exists <- function(file, wd=getwd())
 {
   if (!R.utils::isAbsolutePath(file)) 
@@ -29,17 +27,16 @@ file_exists <- function(file, wd=getwd())
     TRUE
 }
 
-#' Checks if a sting in contained in a word document.
+
+#' Checks if a string is contained in a Word document.
 #' 
-#' This function checks if a sting in contained in a word document.
+#' This function checks if a string in contained in a Word document.
+#' 
 #' @param find A string.
-#' @return TRUE if string is found, FALSE if not.
+#' @return \code{TRUE} if string is found, \code{FALSE} if not.
 #' @export
 #' @example /inst/examples/wdSearchStringExample.R
-
-
-#search string in document and select range
-#
+#' 
 wdSearchString <- function(find = "", wdapp = .R2wd, warn=TRUE) 
 {
   r <- wdapp[["ActiveDocument"]]$Select()   # select whole content
@@ -49,19 +46,18 @@ wdSearchString <- function(find = "", wdapp = .R2wd, warn=TRUE)
   success                                   # return TRUE or FALSE  
 }
 
-#' Replaces a string with an Image
+
+#' Replaces a string with an image
 #' 
 #' This function replaces a piece of text with an image.
+#' 
 #' @param find A string.
-#' @param file path to the image.
-#' @return invisibly returns pointer to new inlineshape object.
+#' @param file The path to the image.
+#' @return Invisibly returns a pointer to new inlineshape object.
 #' @export
 #' @example /inst/examples/wdReplaceTextByImageExample.R
-
-
-# invisibly returns pointer to new inlineshape object
-# todo: handle case if text is found multiple times
-#
+#' @section TODO: handle case if text is found multiple times
+#' 
 wdReplaceTextByImage <- function(find = "", file, wdapp = .R2wd, wd=getwd(), warn=TRUE) 
 {
   file <- R.utils::getAbsolutePath(file, workDirectory=wd) 
@@ -75,7 +71,6 @@ wdReplaceTextByImage <- function(find = "", file, wdapp = .R2wd, wd=getwd(), war
     return(FALSE)
   } 
   
-  
   # delete and replace
   r <- wdapp[["Selection"]][["Range"]]            # get range of selection
   r$Delete()      
@@ -85,21 +80,20 @@ wdReplaceTextByImage <- function(find = "", file, wdapp = .R2wd, wd=getwd(), war
   invisible(ishp)                                 # return pointer to inline shape
 }
 
+
 #' Changes the scale of an image
 #' 
 #' This function change the sclaing of an image in a document.
 #' @param i The number of the image inside the document.
-#' @param ishp A pointer to the image. Best used with wdReplaceTextByImage return value.
+#' @param ishp A pointer to the inline shape, as e.g. returned by \code{\link{wdReplaceTextByImage}}.
 #' @param width The width of the new image in Percent of the word page.
 #' @param height The height of the new image in Percent of the word page.
 #' @param units The number of pixel the image should have
-#' @param lock.asp Locks the ratio of hight and width (correct this way?)
+#' @param lock.asp Locks the ratio of height and width (aspect ratio).
 #' @return invisibly returns pointer to new inlineshape object.
 #' @export 
 #' @example /inst/examples/wdScaleImageExample.R
-#' 
-
-
+#' @section TODO: add example with wdReplaceTextByImage
 #' 
 wdScaleImage <- function(i, ishp=NULL, width=NULL, height=NULL, 
                          lock.asp=TRUE, units="px", wdapp = .R2wd)
@@ -133,16 +127,17 @@ wdScaleImage <- function(i, ishp=NULL, width=NULL, height=NULL,
   }
 }
 
+
 #' Adds a caption to an image.
 #' 
 #' This function adds a caption to an image.
+#' 
 #' @param i The number of the image inside the document.
 #' @param ishp A pointer to the image. Best used with wdReplaceTextByImage return value.
 #' @param title The title of the image.
 #' @export
 #' @example /inst/examples/wdAddImageCaptionExample.R
-#' 
-# toto: check if captions exists and replace
+#' @section TODO: check if captions exists and replace it.
 #
 wdAddImageCaption <- function(i, ishp=NULL, title="", sep=":",
                               wdapp = .R2wd)

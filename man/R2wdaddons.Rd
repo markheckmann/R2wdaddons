@@ -4,14 +4,9 @@
 \name{R2wdaddons}
 \alias{R2wdaddons}
 \alias{R2wdaddons-package}
-\title{Generate R documentation from inline comments.}
+\title{Addon to the R2wd package.}
 \description{
-Roxygen2 allows you to write documentation in comment blocks co-located
-with code.
-}
-\details{
-The only function you're likely to need from \pkg{roxygen2} is
-\code{\link{roxygenize}}. Otherwise refer to the vignettes to see
-how to format the documentation.
+Creates and modifies MS Word documents with R.
+Builds on the R2wd package and adds some extra functionality.
 }
 
