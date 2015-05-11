@@ -1,0 +1,14 @@
+Package: R2wdaddons
+Type: Package
+Title: Addon to the R2wd package.
+Version: 0.1
+Date: 2015-05-11
+Author: Mark Heckmann and Martin Kisse
+Maintainer: Mark Heckmann <heckmann.mark@gmail.com> and Martin Kisse <martin.kisse@gmail.com>
+Description: Creates and modifies MS word documents with R. Builds on the R2wd package and adds some extra functions.
+License: GPL-2
+Suggests: RDCOMClient
+SystemRequirements: Windows
+OS_type: windows
+Depends: R2wd
+Imports: R.utils
