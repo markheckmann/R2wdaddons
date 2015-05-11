@@ -3,9 +3,12 @@ Type: Package
 Title: Addon to the R2wd package.
 Version: 0.1
 Date: 2015-05-11
-Author: Mark Heckmann and Martin Kisse
-Maintainer: Mark Heckmann <heckmann.mark@gmail.com> and Martin Kisse <martin.kisse@gmail.com>
-Description: Creates and modifies MS word documents with R. Builds on the R2wd package and adds some extra functions.
+Description: Creates and modifies MS Word documents with R. 
+             Builds on the R2wd package and adds some extra functionality.
+Authors@R: c( person("Mark", "Heckmann", role = c("aut", "cre"),
+                      email = "heckmann.mark@gmail.com"),
+              person("Martin", "Kisse", role = c("aut", "cre"),
+                      email = "martin.kisse@gmail.com") )
 License: GPL-2
 Suggests: RDCOMClient
 SystemRequirements: Windows
