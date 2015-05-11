@@ -1,11 +1,7 @@
-#' Generate R documentation from inline comments.
+#' Addon to the R2wd package.
 #'
-#' Roxygen2 allows you to write documentation in comment blocks co-located
-#' with code.
-#'
-#' The only function you're likely to need from \pkg{roxygen2} is
-#' \code{\link{roxygenize}}. Otherwise refer to the vignettes to see
-#' how to format the documentation.
+#' Creates and modifies MS Word documents with R. 
+#' Builds on the R2wd package and adds some extra functionality.
 #'
 #' @docType package
 #' @name R2wdaddons
