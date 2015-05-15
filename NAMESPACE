@@ -3,5 +3,6 @@
 export(file_exists)
 export(wdAddImageCaption)
 export(wdReplaceTextByImage)
+export(wdReplaceTextByText)
 export(wdScaleImage)
 export(wdSearchString)
