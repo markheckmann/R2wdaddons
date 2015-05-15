@@ -163,6 +163,7 @@ wdAddImageCaption <- function(i, ishp=NULL, title="", sep=":",
 #' @param text Replacement text.
 #' @return Invisibly returns a pointer to the range object.
 #' @export
+#' @example /inst/examples/wdReplaceTextByTextExample.R
 #' @section TODO: testing
 #' 
 wdReplaceTextByText <- function(find = "", text, wdapp = .R2wd) 
