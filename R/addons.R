@@ -136,12 +136,14 @@ wdScaleImage <- function(i, ishp=NULL, width=NULL, height=NULL,
 #' @param ishp A pointer to the image. Best used with wdReplaceTextByImage return value.
 #' @param title The title of the image.
 #' @param position 0=above, 1=below (default).
+#' @param label WdCaptionLabelID enumeration. -1 = Figure caption (default). 
+#' You may use as string for self customized captions. 
 #' @export
-#' @example /inst/examples/wdAddImageCaptionExample.R
+#' @example /inst/examples/wdAddImageCaptionExsample.R
 #' @section TODO: check if captions exists and replace it.
 #
 wdAddImageCaption <- function(i, ishp=NULL, title="", sep=":", 
-                              position=1,
+                              label = -1, position=1,
                               wdapp = .R2wd)
 {
   wddoc <- wdapp[["ActiveDocument"]]
@@ -151,7 +153,7 @@ wdAddImageCaption <- function(i, ishp=NULL, title="", sep=":",
   ishp$Select()
   wdsel <- wdapp[["Selection"]]
   title <- paste0(sep, " ", title, "\n")
-  wdsel$InsertCaption(Label=-1,
+  wdsel$InsertCaption(Label=label,                 # wdCaptionFigure = -1
                       Title=title,
                       Position=position)        # 1=below
 }
