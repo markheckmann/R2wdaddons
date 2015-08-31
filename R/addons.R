@@ -139,9 +139,9 @@ wdScaleImage <- function(i, ishp=NULL, width=NULL, height=NULL,
 #' @param label WdCaptionLabelID enumeration. -1 = Figure caption (default). 
 #' You may use as string for self customized captions. 
 #' @export
-#' @example /inst/examples/wdAddImageCaptionExsample.R
+#' @example /inst/examples/wdAddImageCaptionExample.R
 #' @section TODO: check if captions exists and replace it.
-#
+#' 
 wdAddImageCaption <- function(i, ishp=NULL, title="", sep=":", 
                               label = -1, position=1,
                               wdapp = .R2wd)
@@ -187,4 +187,44 @@ wdReplaceTextByText <- function(find = "", text, wdapp = .R2wd)
   invisible(r)
 }
 
+
+
+#' Replaces a string with a table created from a dataframe
+#' 
+#' This function replaces a piece of text with a table created using a dataframe.
+#' 
+#' @param find A string.
+#' @param x A dataframe.
+#' @return Invisibly returns a pointer to new table object.
+#' @export
+#' @example /inst/examples/wdReplaceTextByTableExample.R
+#' @section TODO: handle case if text is found multiple times. May a version createTable which can be 
+#' passed a Range object from the search function is te better choice.s
+#' 
+wdReplaceTextByTable <- function(find, x, wdapp = .R2wd)
+{
+  success <- wdSearchString(find, wdapp)    # search string in document and select
+  
+  # if text was not found
+  if (!success) {
+    if (warn)
+      warning("The find text was not found in document", call. = FALSE)
+    return(FALSE)
+  } 
+  
+  nr <- nrow(x)
+  nc <- ncol(x)
+  
+  out <- matrix("", nrow = nr + 1, ncol = nc)
+  out[1 + (1:nr), (1:nc)] <- as.matrix(x)
+  out[1, (1:nc)] <- colnames(x)
+  
+  tt <- paste(apply(out, 1, paste, collapse = "\t"), collapse = "\n")
+  
+  wdsel <- wdapp[["Selection"]]
+  wdsel[["Text"]] <- tt
+  
+  tbl <- wdsel[["Range"]]$ConvertToTable(1, nr, nc, Format=1)
+  invisible(tbl)
+}
 
