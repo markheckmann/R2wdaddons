@@ -5,4 +5,5 @@
 #'
 #' @docType package
 #' @name R2wdaddons
+#' @import stringr
 NULL
