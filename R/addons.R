@@ -62,6 +62,7 @@ wdReplaceTextByImage <- function(find = "", file, wdapp = .R2wd, wd=getwd(), war
 {
   file <- R.utils::getAbsolutePath(file, workDirectory=wd) 
   file_exists(file)                               # check if image exists
+  file <- to_win_path(file)
   success <- wdSearchString(find, wdapp=wdapp)    # search string in document and select
   
   # if text was not found
