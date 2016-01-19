@@ -229,3 +229,17 @@ wdReplaceTextByTable <- function(find, x, wdapp = .R2wd)
   invisible(tbl)
 }
 
+
+
+#' Update table of contents
+#' 
+#' @param wdapp The handle to Word Application (usually not needed).
+#' @export
+#' 
+wdTocUpdate <- function(wdapp = .R2wd)
+{
+  wdapp[["ActiveDocument"]][["TablesOfContents"]]$Item(1)$Update()
+}
+
+
+
