@@ -242,4 +242,36 @@ wdTocUpdate <- function(wdapp = .R2wd)
 }
 
 
+#' Save active document as PDF file
+#' 
+#' @param file File name (if missing, current name is used).
+#' @param path Path to file. Current working directory is used as default.
+#' @param open Open PDF file after coversion? Default is \code{FALSE}.
+#' @param wdapp The handle to the Word Application (usually not needed).
+#' @example /inst/examples/wdSavePdfExample.R
+#' @export
+#' 
+wdSaveAsPdf <- function(file = NULL, path = getwd(), 
+                        open=FALSE, wdapp = .R2wd)
+{
+  wddoc <- wdapp[["ActiveDocument"]]
+  
+  if (is.null(file)) {
+    file <- wddoc[["Name"]]         # get current file name and path
+  }
+  if (!R.utils::isAbsolutePath(file)) {   # make absolute if file is relative path
+    file <- file.path(path, file)
+  }
+  file <- to_win_path(file)       # convert slashes to backslashes 
+  
+  # save as PDF
+  wddoc$ExportAsFixedFormat(
+    OutputFileName = file,
+    ExportFormat = 17,      # wdExportFormatPDF Enum: 17 = PDF
+    OpenAfterExport = open)
+  
+  invisible(wdapp)
+}
+
+
 
