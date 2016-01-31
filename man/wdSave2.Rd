@@ -18,4 +18,15 @@ There is a bug in \code{R2wd::wdSave} as path slashes are not replaced by double
 This may cause an error when using RCDOMClient on some plattforms. This version simply
 does the replacement.
 }
+\examples{
+wdGet2("inst/test.docx")
+
+# save as temp file
+file <- tempfile(fileext=".docx")
+wdSave2(file)
+
+# Fails: Does not yet notice that the path is absolute
+# wdGet2(file)
+
+}
 

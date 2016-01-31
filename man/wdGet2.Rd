@@ -4,7 +4,8 @@
 \alias{wdGet2}
 \title{wdGet2}
 \usage{
-wdGet2(filename = NULL, path = getwd(), method = "rcom", visible = TRUE)
+wdGet2(filename = NULL, path = getwd(), method = "RDCOMClient",
+  visible = TRUE)
 }
 \arguments{
 \item{path}{A Path to the file, if not set otherwise the working directory is used.}
@@ -22,5 +23,16 @@ Store invisible file handle named in global environment.
 There is a bug in \code{R2wd::wdGet} as path slashes are not replaced by double backslashes.
 This may cause an error when using RCDOMClient on some plattforms. This version simply
 does the replacement.
+}
+\examples{
+wdGet2("inst/test.docx")
+
+# save as temp file
+file <- tempfile(fileext=".docx")
+wdSave2(file)
+
+# Fails: Does not yet notice that the path is absolute
+# wdGet2(file)
+
 }
 

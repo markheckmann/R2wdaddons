@@ -28,9 +28,10 @@ to_win_path <- function(file)
 #' @param visible If the Applciation should be visible.
 #' 
 #' @return Store invisible file handle named in global environment.
+#' @example /inst/examples/wdGet2Save2Example.R
 #' @export
 #' 
-wdGet2 <- function (filename = NULL, path = getwd(), method = "rcom", visible = TRUE) 
+wdGet2 <- function (filename = NULL, path = getwd(), method = "RDCOMClient", visible = TRUE) 
 {
   if (method == "rcom") {
     if (!require(rcom)) {
@@ -113,6 +114,7 @@ wdGet2 <- function (filename = NULL, path = getwd(), method = "rcom", visible = 
 #' @param file File name (if missing, Word will ask).
 #' @param path Path to file. Current working directory is used as default.
 #' @param wdapp The handle to the Word Application (usually not needed).
+#' @example /inst/examples/wdGet2Save2Example.R
 #' @export
 #' 
 wdSave2 <- function (file = NULL, path = getwd(), wdapp = .R2wd) 
