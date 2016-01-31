@@ -1,8 +1,8 @@
 Package: R2wdaddons
 Type: Package
 Title: Addon to the R2wd package.
-Version: 0.1.9002
-Date: 2016-01-18
+Version: 0.1.9003
+Date: 2016-01-31
 Description: Creates and modifies MS Word documents with R. 
              Builds on the R2wd package and adds some extra functionality.
 Authors@R: c( person("Mark", "Heckmann", role = c("aut", "cre"),
