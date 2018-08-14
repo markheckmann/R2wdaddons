@@ -1,2 +1,2 @@
-wdGet("inst/test.docx")
+wdGet2("inst/test.docx")
 p1 <- wdReplaceTextByImage("text", "inst/image.png")
