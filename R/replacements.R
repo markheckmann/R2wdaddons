@@ -33,6 +33,12 @@ to_win_path <- function(file)
 #' 
 wdGet2 <- function (filename = NULL, path = getwd(), method = "RDCOMClient", visible = TRUE) 
 {
+  # replace by eympty string if is NA or NULL
+  if (is.null(path))
+    path <- ""
+  if (is.na(path))
+    path <- ""
+  
   if (method == "rcom") {
     if (!require(rcom)) {
       warning("The package rcom is unavailable.")
@@ -89,9 +95,12 @@ wdGet2 <- function (filename = NULL, path = getwd(), method = "RDCOMClient", vis
       }
     }
     if (!found) {
-      #file <- file.path(path, filename)   # convert to windows file path
-      file <- paste(path, filename, sep="/")   # convert to windows file path
-      file <- to_win_path(file)
+      if (path == "") {   # when file path is dropped
+        file <- filename  # I assume that the filename contains the full path
+      } else {
+        file <- paste(path, filename, sep="/")   # append filename to given path 
+      } 
+      file <- to_win_path(file)          # convert to windows file path
       wddoc <- try(wdapp[["Documents"]]$Open(file))
       if (class(wddoc) == "try-error" | is.null(wddoc)) {
         if (wddocs[["Count"]] == 0) 
