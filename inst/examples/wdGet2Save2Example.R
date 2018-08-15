@@ -1,4 +1,5 @@
-wdGet2("inst/test.docx")
+file <- system.file("inst/template.docx", package = "R2wdaddons")
+wdGet2(file)
 
 # save as temp file
 file <- tempfile(fileext=".docx")

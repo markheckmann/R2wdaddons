@@ -31,6 +31,8 @@ This function change the sclaing of an image in a document.
 }
 
 \examples{
-wdGet("inst/wdScaleImage.docx")
-wdScaleImage(1, width=70, units="w")
+file <- system.file("inst/template.docx", package = "R2wdaddons")
+wdGet2(file)
+
+wdScaleImage(i = 1, width=70, units="w")
 }

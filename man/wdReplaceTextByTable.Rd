@@ -23,7 +23,11 @@ passed a Range object from the search function is te better choice.s
 }
 
 \examples{
-wdGet("inst/test.docx")
+file <- system.file("inst/template.docx", package = "R2wdaddons")
+wdGet2(file)
+
+# add a table at placeholder
 d <- mtcars[1:10, 1:6]
-tbl <- wdReplaceTextByTable("Some text to search for!", d)
+tbl <- wdReplaceTextByTable("[placeholder 3]", d)
+
 }

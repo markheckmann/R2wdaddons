@@ -1,1 +1,2 @@
-file_exists("inst/test.docx")
+file <- system.file("inst/template.docx", package = "R2wdaddons")
+file_exists(file)
