@@ -5,5 +5,5 @@
 #'
 #' @docType package
 #' @name R2wdaddons
-#' @import stringr
+#' @import stringr tools R.utils
 NULL
