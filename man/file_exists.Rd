@@ -19,6 +19,7 @@ Checks if files exists after converting relative into absolute path based on
 current working directory by default.
 }
 \examples{
-file_exists("inst/test.docx")
+file <- system.file("inst/template.docx", package = "R2wdaddons")
+file_exists(file)
 }
 \keyword{internal}

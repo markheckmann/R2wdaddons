@@ -31,14 +31,32 @@ to_win_path <- function(file)
 #' @example /inst/examples/wdGet2Save2Example.R
 #' @export
 #' 
-wdGet2 <- function (filename = NULL, path = getwd(), method = "RDCOMClient", visible = TRUE) 
+wdGet2 <- function (filename = NULL, 
+                    path = getwd(), 
+                    method = "RDCOMClient", 
+                    visible = TRUE) 
 {
-  # replace by eympty string if is NA or NULL
-  if (is.null(path))
-    path <- ""
-  if (is.na(path))
-    path <- ""
+  # check if filename is absolute path 
+  # if not combine with path (defaults to working directory)
+  # to create full path to file
+  path_is_absolute <- R.utils::isAbsolutePath(filename)
+  if (!path_is_absolute)
+    filename <- R.utils::filePath(path, filename)
   
+  # does the file exist? with throw an error if not.
+  file_exists(filename)
+  
+  # is it a .docx file?
+  if (! file_is_docx(filename))
+    stop("The file ", filename, " is no .docx file.", call. = FALSE)
+  
+  #   # replace by eympty string if is NA or NULL
+  # if (is.null(path))
+  #   path <- ""
+  # if (is.na(path))
+  #   path <- ""
+  
+  # code copied from r2wd
   if (method == "rcom") {
     if (!require(rcom)) {
       warning("The package rcom is unavailable.")
@@ -69,14 +87,21 @@ wdGet2 <- function (filename = NULL, path = getwd(), method = "RDCOMClient", vis
       try(detach("package:rcom"))
     }
   }
+  
+  # create handle to word application 
   switch(client, rcom = {
     wdapp <- comGetObject("Word.Application")
     if (is.null(wdapp)) wdapp <- comCreateObject("Word.Application")
   }, RDCOMClient = {
     wdapp <- COMCreate("Word.Application")
   }, none = stop("no client"))
+  
+  # set application to visible if prompted
   if (visible) 
     wdapp[["visible"]] <- TRUE
+  
+  # create word document if no filename has been supplied
+  # and no document is opened
   if (is.null(filename)) {
     if (wdapp[["Documents"]][["Count"]] == 0) 
       wdapp[["Documents"]]$Add()
@@ -94,14 +119,15 @@ wdGet2 <- function (filename = NULL, path = getwd(), method = "RDCOMClient", vis
         }
       }
     }
+    # if document cannot be found in open word docs create it
     if (!found) {
-      if (path == "") {   # when file path is dropped
-        file <- filename  # I assume that the filename contains the full path
-      } else {
-        file <- paste(path, filename, sep="/")   # append filename to given path 
-      } 
-      file <- to_win_path(file)          # convert to windows file path
-      wddoc <- try(wdapp[["Documents"]]$Open(file))
+      # if (path == "") {   # when file path is dropped
+      #   file <- filename  # I assume that the filename contains the full path
+      # } else {
+      #   file <- paste(path, filename, sep="/")   # append filename to given path 
+      # } 
+      filename <- to_win_path(filename)          # convert to windows file path
+      wddoc <- try(wdapp[["Documents"]]$Open(filename))
       if (class(wddoc) == "try-error" | is.null(wddoc)) {
         if (wddocs[["Count"]] == 0) 
           wdapp$Quit()
