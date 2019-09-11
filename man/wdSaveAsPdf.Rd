@@ -4,7 +4,8 @@
 \alias{wdSaveAsPdf}
 \title{Save active document as PDF file}
 \usage{
-wdSaveAsPdf(file = NULL, path = getwd(), open = FALSE, wdapp = .R2wd)
+wdSaveAsPdf(file = NULL, path = getwd(), open = FALSE,
+  wdapp = .R2wd)
 }
 \arguments{
 \item{file}{File name (if missing, current name is used).}

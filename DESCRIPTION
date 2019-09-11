@@ -1,13 +1,13 @@
 Package: R2wdaddons
 Type: Package
 Title: Addon to the R2wd package.
-Version: 0.1.9003
-Date: 2016-01-31
+Version: 0.1.9004
+Date: 2019-09-11
 Description: Creates and modifies MS Word documents with R. 
              Builds on the R2wd package and adds some extra functionality.
 Authors@R: c( person("Mark", "Heckmann", role = c("aut", "cre"),
                       email = "heckmann.mark@gmail.com"),
-              person("Martin", "Kisse", role = c("aut"),
+              person("Martin", "Kisse", role = c("ctb"),
                       email = "martin.kisse@gmail.com") )
 License: GPL-2
 Suggests: RDCOMClient
@@ -15,4 +15,4 @@ SystemRequirements: Windows
 OS_type: windows
 Depends: R2wd
 Imports: R.utils, stringr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

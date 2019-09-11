@@ -4,8 +4,8 @@
 \alias{wdAddImageCaption}
 \title{Adds a caption to an image.}
 \usage{
-wdAddImageCaption(i, ishp = NULL, title = "", sep = ":", label = -1,
-  position = 1, wdapp = .R2wd)
+wdAddImageCaption(i, ishp = NULL, title = "", sep = ":",
+  label = -1, position = 1, wdapp = .R2wd)
 }
 \arguments{
 \item{i}{The number of the image inside the document.}
